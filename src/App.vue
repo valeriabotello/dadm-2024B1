@@ -3,7 +3,7 @@ import { ref } from "vue";
 //modelo 
 const header = ref('App lista de Compras');
 const items = ref([
-    {id:'0', label: '10 bolillos'}, 
+    {id:'0', label: 'salchichas'}, 
     {id:'1', label: 'gomitas'}, 
     {id:'2', label: 'leche'},
     {id:'3', label: 'refrescos'}
