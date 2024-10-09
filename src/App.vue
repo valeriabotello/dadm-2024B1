@@ -5,7 +5,7 @@ const header = ref('App lista de Compras');
 const items = ref([
     {id:'0', label:'salchichas', purchased: false, priority: true}, 
     {id:'1', label:'gomitas', purchased: true,priority: false}, 
-    {id:'2', label:'leche', purchased: true,priority: true},
+    {id:'2', label:'leche', purchased: true,priority: false},
     {id:'3', label:'refrescos', purchased: false,priority: true}
 ]);
 const newItem = ref(''); 
@@ -40,12 +40,22 @@ const newItemHighPriority = ref(false);
     Guardar</button>
   
 </form>
+<!-- lista clase con objetos  -->
 <ul>
     <li
          v-for="{label, id, purchased, priority} in items" 
          :key="id" 
          :class="{strikeout: purchased, priority: priority, }"
          class="amazing" > 
+         {{priority ?"🎇": "🎃"}} {{label}} 
+        </li>
+  </ul>
+  <!-- lista clase con arreglos  -->
+  <ul>
+    <li
+         v-for="{label, id, purchased, priority} in items" 
+         :key="id" 
+         :class="[purchased ? 'strikeout': '', priority ? 'priority' : '']"> 
          {{priority ?"🎇": "🎃"}} {{label}} 
         </li>
   </ul>
