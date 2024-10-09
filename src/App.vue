@@ -3,10 +3,10 @@ import { ref } from "vue";
 //modelo 
 const header = ref('App lista de Compras');
 const items = ref([
-    {id:'0', label: 'salchichas'}, 
-    {id:'1', label: 'gomitas'}, 
-    {id:'2', label: 'leche'},
-    {id:'3', label: 'refrescos'}
+    {id:'0', label:'salchichas', purchased: false, priority: true}, 
+    {id:'1', label:'gomitas', purchased: true,priority: false}, 
+    {id:'2', label:'leche', purchased: true,priority: true},
+    {id:'3', label:'refrescos', purchased: false,priority: true}
 ]);
 const newItem = ref(''); 
 const newItemHighPriority = ref(false);
@@ -40,11 +40,19 @@ const newItemHighPriority = ref(false);
     Guardar</button>
   
 </form>
-    
-    <ul>
-        <li v-for="({id,label}, i) in items" :key="id"> {{ i+1 }} {{i%2==0?'🔥':'🛍️'}} {{label}} </li>
-    </ul>
+<ul>
+    <li
+         v-for="{label, id, purchased, priority} in items" 
+         :key="id" 
+         :class="{strikeout: purchased, priority: priority, }"
+         class="amazing" > 
+         {{priority ?"🎇": "🎃"}} {{label}} 
+        </li>
+  </ul>
+  <p v-if="items.length === 0"> 🥀NO HAY ELEMENTOS EN TU LISTA 🥀</p>
+  <p v-if="items.length === 0"> 🥀 NO HAY ELEMENTOS EN LA LISTA 🥀</p>
 </template>
+
 
 <style scoped>
 .shopping-cart-icon{
