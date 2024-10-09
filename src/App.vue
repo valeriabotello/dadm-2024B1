@@ -31,9 +31,12 @@ const newItemHighPriority = ref(false);
       <input type="checkbox" v-model="newItemHighPriority" />
       importancia
     </label>
+<!-- Boton -->
 
-    <!-- Boton -->
-    <button class="btn btn-primary">
+    <button 
+    :disabled="newItem.length == 0"
+    class="btn btn-primary">
+
     Guardar</button>
   
 </form>
